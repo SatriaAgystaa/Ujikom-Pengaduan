@@ -19,7 +19,7 @@
                     <div>
                         @if ($report->image)
                             <img src="{{ asset('storage/' . $report->image) }}" alt="Gambar Laporan"
-                                class="w-full h-96 object-cover rounded-lg transition duration-300 hover:scale-105">
+                                class="w-full h-96 object-cover rounded-lg transition duration-300">
                         @else
                             <div class="w-full h-96 bg-gray-100 flex items-center justify-center rounded-lg text-gray-400">
                                 <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">

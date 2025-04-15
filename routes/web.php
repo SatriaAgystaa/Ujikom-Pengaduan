@@ -17,7 +17,11 @@ route::get('/', function () {
 });
 
 Route::prefix('guest')->group(function() {
-   
+    // Daftar laporan untuk guest
+    Route::get('/laporan', [GuestReportController::class, 'index'])->name('dashboard.guest.reports.index');
+
+    // Detail laporan untuk guest
+    Route::get('/laporan/{report}', [GuestReportController::class, 'show'])->name('dashboard.guest.reports.show');
 });
 
 Route::middleware(['auth', 'verified', 'role:user'])->group(function () {

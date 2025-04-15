@@ -70,9 +70,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                     </a>
-                    {{-- <a href="{{ route('dashboard.guest.reports.index') }}" class="border-2 border-indigo-600/20 text-indigo-600 hover:bg-indigo-600/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-base">
+                    <a href="{{ route('dashboard.guest.reports.index') }}" class="border-2 border-indigo-600/20 text-indigo-600 hover:bg-indigo-600/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-base">
                         Lihat Laporan
-                    </a> --}}
+                    </a>
                 </div>
             </div>
             <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-400 rounded-full opacity-10 blur-3xl"></div>
