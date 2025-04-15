@@ -11,7 +11,30 @@ class HeadStaffDashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.head.head');
+        $totalUsers = User::where('role', 'user')->count();
+        $totalStaff = User::where('role', 'staff')->count();
+        $totalReports = Report::count();
+
+
+        // Jumlah laporan berdasarkan status umum
+        $completedReports = Report::where('status', 'SELESAI')->count();
+        $inProgressReports = Report::where('status', 'PROSES')->count();
+
+
+        // Jumlah laporan per provinsi (semua status digabung)
+        $complaintsPerProvince = Report::select('province', DB::raw('count(*) as total'))
+            ->groupBy('province')
+            ->pluck('total', 'province');
+
+
+        return view('dashboard.head.head', compact(
+            'totalUsers',
+            'totalStaff',
+            'totalReports',
+            'completedReports',
+            'inProgressReports',
+            'complaintsPerProvince'
+        ));
     }
 }
 
