@@ -34,7 +34,7 @@ class StaffController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'role' => 'staff', // pastikan ini selalu tersimpan
+            'role' => 'staff',
         ]);
 
         return redirect()->route('headstaff.staff.index')->with('success', 'Staff berhasil ditambahkan.');
