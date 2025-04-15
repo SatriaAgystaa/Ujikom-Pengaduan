@@ -118,6 +118,9 @@
                 <x-responsive-nav-link :href="route('dashboard.guest.reports.index')" :active="request()->routeIs('dashboard.guest.reports.index')" class="text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg">
                     Lihat Laporan
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('dashboard.guest.reports.index')" :active="request()->routeIs('dashboard.guest.reports.index')" class="text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg">
+                    Lihat Laporan
+                </x-responsive-nav-link>
             @endauth
             
             @auth
