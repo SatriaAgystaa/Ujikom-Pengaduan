@@ -9,6 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 border-b border-gray-200">
+                    <div class="pb-4 mx-auto">
+                        <h3 class="text-lg font-medium">Kelola Data Staff</h3>
+                    </div>
                     @if(session('success'))
                         <div class="mb-6 p-4 bg-indigo-50 text-indigo-800 rounded-lg border border-indigo-200">
                             {{ session('success') }}
