@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers\User;
-
 
 use App\Models\Report;
 use App\http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
 
 class UserDashboardController extends Controller
 {

@@ -28,8 +28,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Report::class, 'report_likes')->withTimestamps();
     }
-   
-
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +41,6 @@ class User extends Authenticatable
         'role',
     ];
 
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -53,7 +50,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
 
     /**
      * Get the attributes that should be cast.

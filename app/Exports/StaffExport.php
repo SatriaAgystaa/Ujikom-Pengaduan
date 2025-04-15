@@ -1,14 +1,11 @@
 <?php
 
-
 namespace App\Exports;
-
 
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-
 
 class StaffExport implements FromCollection, WithHeadings, WithMapping
 {
@@ -19,7 +16,6 @@ class StaffExport implements FromCollection, WithHeadings, WithMapping
             ->get();
     }
 
-
     public function headings(): array
     {
         return [
@@ -29,7 +25,6 @@ class StaffExport implements FromCollection, WithHeadings, WithMapping
             'Dibuat pada',
         ];
     }
-
 
     public function map($row): array
     {

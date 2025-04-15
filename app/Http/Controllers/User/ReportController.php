@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers\User;
-
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -11,17 +9,14 @@ use Illuminate\Http\Request;
 use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 
-
 class ReportController extends Controller
 {
     use AuthorizesRequests;
-
 
     public function create()
     {
         return view('dashboard.user.reports.create');
     }
-
 
     public function store(Request $request)
     {
@@ -35,9 +30,7 @@ class ReportController extends Controller
             'image' => 'required|image|max:2048',
         ]);
 
-
         $path = $request->file('image')->store('reports', 'public');
-
 
         Report::create([
             'user_id' => Auth::id(),
@@ -51,21 +44,17 @@ class ReportController extends Controller
             'image' => $path,
         ]);
 
-
         return redirect()->route('dashboard.user')->with('success', 'Laporan berhasil dibuat.');
     }
-
 
     public function show(Report $report)
     {
         $report->load(['user', 'likes', 'comments.user', 'progress.staff']);
         $report->increment('views');
 
-
         $comments = $report->comments()->latest()->paginate(5);
         return view('dashboard.user.reports.show', compact('report', 'comments'));
     }
-
 
     public function edit(Report $report)
     {
@@ -102,23 +91,18 @@ class ReportController extends Controller
         return redirect()->route('dashboard.user')->with('success', 'Laporan berhasil diperbarui.');
     }
 
-
     public function destroy(Report $report)
     {
         $this->authorize('delete', $report);
-
 
         if ($report->image) {
             Storage::delete('public/' . $report->image);
         }
 
-
         $report->delete();
-
 
         return redirect()->route('dashboard.user')->with('success', 'Laporan berhasil dihapus.');
     }
-
 
     public function toggleLike(Report $report)
     {

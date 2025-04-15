@@ -1,9 +1,7 @@
 <?php
 
-
 // app/Http/Controllers/CommentController.php
 namespace App\Http\Controllers\User;
-
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Controller;
@@ -11,11 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Report;
 
-
 class CommentController extends Controller
 {
     use AuthorizesRequests;
-
 
     public function store(Request $request, Report $report)
     {
@@ -30,10 +26,8 @@ class CommentController extends Controller
             'content' => $request->content,
         ]);
 
-
         return back()->with('success', 'Komentar berhasil dikirim!');
     }
-
 
     public function update(Request $request, Comment $comment)
     {
