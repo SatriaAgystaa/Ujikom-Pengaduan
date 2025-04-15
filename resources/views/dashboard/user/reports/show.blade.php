@@ -51,9 +51,12 @@
                                     <span>Total View: {{ $report->views ?? 0 }}</span>
                                 </div>
                             </div>
-                            <form action="{{ route('user.reports.like', $report->id) }}" method="POST" class="mt-4">
-                                @csrf
-                                <button type="submit" class="flex items-center text-indigo-600 hover:text-indigo-800 transition">
+                            <div>
+                                <button 
+                                    type="button" 
+                                    id="like-button" 
+                                    data-report-id="{{ $report->id }}" 
+                                    class="flex items-center text-indigo-600 hover:text-indigo-800 transition">
                                     @if ($report->isLikedBy(auth()->user()))
                                         <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
@@ -63,9 +66,9 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                         </svg>
                                     @endif
-                                    <span class="ml-1">({{ $report->likes->count() }})</span>
+                                    <span class="ml-1" id="like-count">({{ $report->likes->count() }})</span>
                                 </button>
-                            </form>
+                            </div>
                             @if ($report->progress->isNotEmpty())
                                 <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-6">
                                     <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
@@ -185,3 +188,31 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.getElementById('like-button').addEventListener('click', function () {
+        const reportId = this.dataset.reportId;
+
+        fetch(`/reports/${reportId}/like`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Optional: update jumlah like langsung
+            if (data.likes !== undefined) {
+                document.getElementById('like-count').innerText = `(${data.likes})`;
+            }
+
+            // Optional: ganti icon love kalau kamu mau
+            // location.reload(); // Kalau kamu tetap ingin reload manual
+        })
+        .catch(error => {
+            console.error('Error liking report:', error);
+        });
+    });
+</script>

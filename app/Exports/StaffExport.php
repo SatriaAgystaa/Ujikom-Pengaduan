@@ -3,36 +3,35 @@
 namespace App\Exports;
 
 use App\Models\User;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 
-class StaffExport implements FromCollection, WithHeadings, WithMapping
+class StaffExport implements FromArray, WithHeadings
 {
-    public function collection()
+    public function array(): array
     {
-        return User::where('role', 'staff')
-            ->select('id', 'name', 'email', 'created_at')
-            ->get();
+        $staff = User::where('role', 'staff')->get();
+
+        $data = [];
+
+        foreach ($staff as $index => $user) {
+            $data[] = [
+                'No' => $index + 1,
+                'Nama' => $user->name,
+                'Email' => $user->email,
+                'Provinsi' => optional($user->province)->name,
+                'Dibuat' => $user->created_at->format('Y-m-d'),
+            ];
+        }
+
+        return $data;
     }
 
     public function headings(): array
     {
         return [
-            'ID',
-            'Nama',
-            'Email',
-            'Dibuat pada',
-        ];
-    }
-
-    public function map($row): array
-    {
-        return [
-            $row->id,
-            $row->name,
-            $row->email,
-            $row->created_at->format('Y-m-d H:i:s'),
+            ['Data Staff'],
+            ['No', 'Nama', 'Email', 'Provinsi', 'Dibuat'],
         ];
     }
 }

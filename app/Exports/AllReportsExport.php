@@ -5,6 +5,8 @@ namespace App\Exports;
 use App\Models\Report;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\FromArray;
+
 use Maatwebsite\Excel\Concerns\WithMapping;
 
 class AllReportsExport implements FromCollection, WithHeadings, WithMapping
@@ -29,12 +31,13 @@ class AllReportsExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         return [
-            'ID',
+            ['Report Details'],
+            ['ID',
             'Judul',
             'Status',
             'Pelapor',
             'Ditangani Oleh',
-            'Tanggal Dibuat',
+            'Tanggal Dibuat',]
         ];
     }
 }

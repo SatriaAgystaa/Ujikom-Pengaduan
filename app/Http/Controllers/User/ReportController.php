@@ -50,7 +50,10 @@ class ReportController extends Controller
     public function show(Report $report)
     {
         $report->load(['user', 'likes', 'comments.user', 'progress.staff']);
-        $report->increment('views');
+
+        if (Auth::id() !== $report->user_id) {
+            $report->increment('views');
+        }
 
         $comments = $report->comments()->latest()->paginate(5);
         return view('dashboard.user.reports.show', compact('report', 'comments'));
@@ -103,17 +106,22 @@ class ReportController extends Controller
 
         return redirect()->route('dashboard.user')->with('success', 'Laporan berhasil dihapus.');
     }
-
+    
     public function toggleLike(Report $report)
     {
         $user = auth()->user();
-   
+    
         if ($report->isLikedBy($user)) {
             $report->likes()->where('user_id', $user->id)->delete();
         } else {
             $report->likes()->create(['user_id' => $user->id]);
         }
-   
-        return back();
+    
+        return response()->json([
+            'status' => 'ok',
+            'likes' => $report->likes()->count(),
+        ]);
     }
+    
+    
 }

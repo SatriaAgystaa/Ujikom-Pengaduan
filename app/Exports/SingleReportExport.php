@@ -32,12 +32,13 @@ class SingleReportExport implements FromArray, WithHeadings
     public function headings(): array
     {
         return [
-            'ID',
+            ['Report Details'],
+            ['ID',
             'Judul',
             'Status',
             'Pelapor',
             'Ditangani Oleh',
-            'Tanggal Dibuat',
+            'Tanggal Dibuat',]
         ];
     }
 }
