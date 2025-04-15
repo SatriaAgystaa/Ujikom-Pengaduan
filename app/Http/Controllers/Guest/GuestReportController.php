@@ -38,11 +38,9 @@ class GuestReportController extends Controller
 
     public function show(Report $report)
     {
-        // Menambahkan komentar, tanggapan staff, dan like ke dalam data yang dikirimkan ke view
         $report->increment('views');
 
-        // Mengambil komentar yang terkait dengan laporan
-        $comments = $report->comments()->with('user')->latest()->paginate(5); // Mengambil komentar terbaru
+        $comments = $report->comments()->with('user')->latest()->paginate(5);
 
         return view('dashboard.guest.reports.show', compact('report', 'comments'));
     }

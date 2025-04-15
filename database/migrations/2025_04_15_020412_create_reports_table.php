@@ -1,10 +1,8 @@
 <?php
 
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 
 return new class extends Migration {
     public function up(): void
@@ -19,12 +17,11 @@ return new class extends Migration {
             $table->string('subdistrict');
             $table->string('village');
             $table->text('image')->nullable();
-            $table->json('voting')->nullable(); // untuk like dari user_id
+            $table->json('voting')->nullable();
             $table->enum('status', ['PROSES', 'DITOLAK', 'SELESAI'])->default('PROSES');
             $table->timestamps();
         });
     }
-
 
     public function down(): void
     {
