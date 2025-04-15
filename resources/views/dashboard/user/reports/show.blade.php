@@ -203,13 +203,9 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Optional: update jumlah like langsung
             if (data.likes !== undefined) {
                 document.getElementById('like-count').innerText = `(${data.likes})`;
             }
-
-            // Optional: ganti icon love kalau kamu mau
-            // location.reload(); // Kalau kamu tetap ingin reload manual
         })
         .catch(error => {
             console.error('Error liking report:', error);

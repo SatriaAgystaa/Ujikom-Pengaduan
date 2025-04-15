@@ -7,10 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4">
-
-
     <div class="w-full max-w-md p-8 bg-white shadow-xl rounded-2xl border border-blue-100/50 animate-fade-in">
-        <!-- Logo Section -->
         <div class="flex justify-center mb-6">
             <div class="bg-gradient-to-r from-indigo-600 to-blue-500 p-3 rounded-full shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,21 +15,12 @@
                 </svg>
             </div>
         </div>
-
-
-        <!-- Header Section -->
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-gray-800">Buat Akun Baru</h2>
             <p class="text-sm text-gray-500 mt-2">Isi formulir berikut untuk mendaftar</p>
         </div>
-
-
-        <!-- Registration Form -->
         <form method="POST" action="{{ route('register') }}" class="space-y-5">
             @csrf
-
-
-            <!-- Name Field -->
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
                 <div class="relative">
@@ -54,9 +42,6 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Email Field -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
                 <div class="relative">
@@ -78,9 +63,6 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Password Field -->
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                 <div class="relative">
@@ -102,9 +84,6 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Password Confirmation Field -->
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
                 <div class="relative">
@@ -126,9 +105,6 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Terms and Conditions -->
             <div class="flex items-start">
                 <div class="flex items-center h-5">
                     <input id="terms" name="terms" type="checkbox" required
@@ -139,16 +115,10 @@
                     <p class="text-gray-500">Dengan mendaftar, Anda menyetujui syarat dan ketentuan kami</p>
                 </div>
             </div>
-
-
-            <!-- Submit Button -->
             <button type="submit"
                 class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200 transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
                 Daftar Sekarang
             </button>
-
-
-            <!-- Login Link -->
             <p class="text-center text-sm text-gray-600">
                 Sudah punya akun?
                 <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500 hover:underline transition duration-200">
@@ -157,8 +127,6 @@
             </p>
         </form>
     </div>
-
-
 </body>
 </html>
 

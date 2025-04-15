@@ -2,8 +2,6 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-900 leading-tight">Edit Laporan</h2>
     </x-slot>
-
-
     <div class="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <a href="{{ route('dashboard.user') }}" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition">
             <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -12,8 +10,6 @@
             Kembali ke Dashboard User
         </a>
     </div>
-
-
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
@@ -47,20 +43,14 @@
                         <label for="province" class="block text-sm font-medium text-gray-700">Provinsi</label>
                         <select id="province" name="province" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="regency" class="block text-sm font-medium text-gray-700">Kabupaten/Kota</label>
                         <select id="regency" name="regency" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="subdistrict" class="block text-sm font-medium text-gray-700">Kecamatan</label>
                         <select id="subdistrict" name="subdistrict" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="village" class="block text-sm font-medium text-gray-700">Kelurahan/Desa</label>
                         <select id="village" name="village" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
@@ -105,8 +95,6 @@
             </form>
         </div>
     </div>
-
-
     <script>
         const selectedProvince = @json($report->province);
         const selectedRegency = @json($report->regency);
@@ -133,27 +121,17 @@
                 console.error('Error fetching wilayah:', error);
             }
         }
-
-
         document.addEventListener('DOMContentLoaded', async () => {
-            // Load initial data
             await fetchWilayah('provinces', 'province', null, selectedProvince);
-           
-            // If province is selected, load regencies
             const provinceSelect = document.getElementById('province');
             const provinceId = provinceSelect.querySelector('option:checked')?.dataset?.id;
-           
             if (provinceId) {
                 await fetchWilayah('regencies', 'regency', provinceId, selectedRegency);
-               
-                // If regency is selected, load districts
                 const regencySelect = document.getElementById('regency');
                 const regencyId = regencySelect.querySelector('option:checked')?.dataset?.id;
                
                 if (regencyId) {
                     await fetchWilayah('districts', 'subdistrict', regencyId, selectedSubdistrict);
-                   
-                    // If district is selected, load villages
                     const subdistrictSelect = document.getElementById('subdistrict');
                     const subdistrictId = subdistrictSelect.querySelector('option:checked')?.dataset?.id;
                    
@@ -162,9 +140,6 @@
                     }
                 }
             }
-
-
-            // Event listeners for dynamic loading
             provinceSelect.addEventListener('change', async function() {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {
@@ -173,8 +148,6 @@
                     document.getElementById('village').innerHTML = '<option value="">Pilih</option>';
                 }
             });
-
-
             document.getElementById('regency').addEventListener('change', async function() {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {
@@ -182,8 +155,6 @@
                     document.getElementById('village').innerHTML = '<option value="">Pilih</option>';
                 }
             });
-
-
             document.getElementById('subdistrict').addEventListener('change', async function() {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {

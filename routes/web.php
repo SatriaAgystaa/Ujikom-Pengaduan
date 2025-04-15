@@ -17,10 +17,7 @@ route::get('/', function () {
 });
 
 Route::prefix('guest')->group(function() {
-    // Daftar laporan untuk guest
     Route::get('/laporan', [GuestReportController::class, 'index'])->name('dashboard.guest.reports.index');
-
-    // Detail laporan untuk guest
     Route::get('/laporan/{report}', [GuestReportController::class, 'show'])->name('dashboard.guest.reports.show');
 });
 
@@ -67,7 +64,6 @@ Route::middleware(['auth', 'verified', 'role:head_staff'])->group(function () {
     Route::get('/head-staff/staff/export', [StaffController::class, 'export'])->name('headstaff.staff.export');
 });
 
-// Route fallback dashboard (otomatis redirect ke dashboard sesuai role)
 Route::get('/dashboard', function () {
     $user = Auth::user();
 
@@ -86,7 +82,4 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
 require __DIR__.'/auth.php';
-
-

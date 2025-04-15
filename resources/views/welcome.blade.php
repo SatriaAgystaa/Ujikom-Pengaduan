@@ -10,12 +10,10 @@
 <body class="font-sans bg-gradient-to-br from-indigo-50 to-blue-50 text-gray-900 antialiased">
     <nav class="bg-gradient-to-r from-indigo-700 to-blue-700 bg-opacity-90 backdrop-blur-md py-4 shadow-md sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-
             <a href="{{ route('login') }}" class="flex items-center space-x-2">
                 <img src="{{ asset('https://i.pinimg.com/736x/c6/38/44/c63844abe5ebb683ef75fd21af69b2ec.jpg') }}" alt="Logo" class="h-8 w-8 rounded-full object-cover border-2 border-white shadow">
                 <span class="text-lg font-semibold text-white tracking-tight hidden sm:inline">Pengaduan</span>
             </a>
-
             <div class="hidden sm:flex items-center space-x-4">
                 @guest
                     <a href="{{ route('login') }}" class="text-white hover:text-indigo-100 px-3 py-2 text-sm font-medium rounded-lg transition-colors">
@@ -25,7 +23,6 @@
                         Daftar
                     </a>
                 @endguest
-
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -38,9 +35,7 @@
                                 </div>
                             </button>
                         </x-slot>
-
                         <x-slot name="content">
-                            <!-- Dropdown content -->
                             <div class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
                                 <div class="px-4 py-3">
                                     <p class="text-sm text-gray-900 font-medium">{{ Auth::user()->name }}</p>
@@ -53,7 +48,6 @@
             </div>
         </div>
     </nav>
-
     <section class="relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 py-24 md:py-32 flex flex-col items-center justify-center text-center">
             <div class="relative z-10 w-full">
@@ -79,7 +73,6 @@
             <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full opacity-10 blur-3xl"></div>
         </div>
     </section>
-
     <section id="layanan" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -91,7 +84,6 @@
                     Kami menyediakan platform pengaduan masyarakat yang cepat, transparan, dan efektif.
                 </p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-2">
                     <div class="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 mx-auto">
@@ -102,7 +94,6 @@
                     <h3 class="text-xl font-bold text-center mb-4 text-gray-900">Proses Mudah</h3>
                     <p class="text-gray-600 text-center">Hanya butuh 2 menit untuk mengisi formulir laporan secara online dengan panduan langkah demi langkah.</p>
                 </div>
-                
                 <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-2">
                     <div class="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 mx-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,7 +103,6 @@
                     <h3 class="text-xl font-bold text-center mb-4 text-gray-900">Respon Cepat</h3>
                     <p class="text-gray-600 text-center">Tim kami merespon dalam 24 jam kerja setelah laporan diterima dengan update real-time.</p>
                 </div>
-                
                 <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-2">
                     <div class="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 mx-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,7 +115,6 @@
             </div>
         </div>
     </section>
-
     <section class="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -137,20 +126,17 @@
                     Hanya perlu 3 langkah sederhana untuk menyampaikan keluhan Anda.
                 </p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-all duration-300">
                     <div class="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-100 to-blue-100 text-indigo-600 flex items-center justify-center font-bold text-2xl mx-auto mb-6">1</div>
                     <h3 class="text-xl font-bold mb-4 text-gray-900">Daftar Akun</h3>
                     <p class="text-gray-600">Buat akun gratis dengan email atau nomor telepon Anda dalam waktu kurang dari 1 menit.</p>
                 </div>
-                
                 <div class="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-all duration-300">
                     <div class="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-100 to-blue-100 text-indigo-600 flex items-center justify-center font-bold text-2xl mx-auto mb-6">2</div>
                     <h3 class="text-xl font-bold mb-4 text-gray-900">Isi Formulir</h3>
                     <p class="text-gray-600">Deskripsikan masalah dengan jelas, tambahkan lokasi dan lampirkan foto pendukung.</p>
                 </div>
-                
                 <div class="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-all duration-300">
                     <div class="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-100 to-blue-100 text-indigo-600 flex items-center justify-center font-bold text-2xl mx-auto mb-6">3</div>
                     <h3 class="text-xl font-bold mb-4 text-gray-900">Pantau Perkembangan</h3>
@@ -159,7 +145,6 @@
             </div>
         </div>
     </section>
-
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold text-gray-900 mb-6">Siap Melaporkan Masalah di Lingkungan Anda?</h2>
@@ -176,11 +161,9 @@
             </div>
         </div>
     </section>
-
     <footer class="bg-gradient-to-br from-indigo-700 to-blue-700 text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Brand Column -->
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
                         <div class="bg-white p-1.5 rounded-full shadow-md">
@@ -211,8 +194,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Navigation Column -->
                 <div>
                     <h4 class="text-lg font-semibold mb-6 text-white">Navigasi</h4>
                     <ul class="space-y-3">
@@ -242,8 +223,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Contact Column -->
                 <div>
                     <h4 class="text-lg font-semibold mb-6 text-white">Kontak Kami</h4>
                     <ul class="space-y-3 text-indigo-200 text-sm">
@@ -268,8 +247,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Newsletter Column -->
                 <div>
                     <h4 class="text-lg font-semibold mb-6 text-white">Berlangganan</h4>
                     <p class="text-indigo-200 text-sm mb-4">
@@ -287,8 +264,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Copyright -->
             <div class="border-t border-indigo-800 mt-12 pt-8 text-center">
                 <p class="text-indigo-400 text-sm">
                     &copy; 2025 Pengaduan. All rights reserved.

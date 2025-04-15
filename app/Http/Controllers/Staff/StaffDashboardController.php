@@ -66,26 +66,22 @@ class StaffDashboardController extends Controller
 
     public function destroy(Report $report)
     {
-        // Pastikan hanya laporan yang SELESAI yang bisa dihapus
         if (!in_array($report->status, ['SELESAI', 'DITOLAK'])) {
             return redirect()->back()->with('error', 'Laporan hanya bisa dihapus jika statusnya SELESAI atau DITOLAK.');
         }
    
-        // Hapus semua relasi terkait
         $report->comments()->delete();
         $report->likes()->delete();
         $report->progress()->delete();
        
         if ($report->response) {
-            $report->response()->delete(); // jika relasi hasOne
+            $report->response()->delete();
         }
    
-        // Hapus gambar jika ada
         if ($report->image && file_exists(public_path('storage/' . $report->image))) {
             unlink(public_path('storage/' . $report->image));
         }
    
-        // Hapus laporan
         $report->delete();
    
         return redirect()->back()->with('success', 'Laporan berhasil dihapus.');

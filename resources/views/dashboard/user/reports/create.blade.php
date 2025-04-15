@@ -21,8 +21,6 @@
                 </h3>
                 <p class="mt-1 text-sm text-gray-500">Silakan isi formulir berikut untuk membuat laporan baru.</p>
             </div>
-
-
             <form action="{{ route('user.reports.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 px-4 py-5 sm:p-6">
                 @csrf
                 <div>
@@ -45,20 +43,14 @@
                         <label for="province" class="block text-sm font-medium text-gray-700">Provinsi</label>
                         <select id="province" name="province" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="regency" class="block text-sm font-medium text-gray-700">Kabupaten/Kota</label>
                         <select id="regency" name="regency" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="subdistrict" class="block text-sm font-medium text-gray-700">Kecamatan</label>
                         <select id="subdistrict" name="subdistrict" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                     </div>
-
-
                     <div>
                         <label for="village" class="block text-sm font-medium text-gray-700">Kelurahan/Desa</label>
                         <select id="village" name="village" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
@@ -82,9 +74,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                {{-- Submit Button --}}
                 <div class="flex justify-end">
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -96,16 +85,11 @@
             </form>
         </div>
     </div>
-
-
     <script>
-        // Fetch wilayah dari API EMSIFA
         async function fetchWilayah(endpoint, targetSelect, parentId = null) {
             const url = parentId
                 ? `https://www.emsifa.com/api-wilayah-indonesia/api/${endpoint}/${parentId}.json`
                 : `https://www.emsifa.com/api-wilayah-indonesia/api/${endpoint}.json`;
-
-
             const response = await fetch(url);
             const data = await response.json();
             const select = document.getElementById(targetSelect);
@@ -114,12 +98,8 @@
                 select.innerHTML += `<option value="${item.name}" data-id="${item.id}">${item.name}</option>`;
             });
         }
-
-
         document.addEventListener('DOMContentLoaded', () => {
             fetchWilayah('provinces', 'province');
-
-
             document.getElementById('province').addEventListener('change', function () {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {
@@ -130,8 +110,6 @@
                 document.getElementById('subdistrict').innerHTML = '<option value="">Pilih</option>';
                 document.getElementById('village').innerHTML = '<option value="">Pilih</option>';
             });
-
-
             document.getElementById('regency').addEventListener('change', function () {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {
@@ -141,8 +119,6 @@
                 }
                 document.getElementById('village').innerHTML = '<option value="">Pilih</option>';
             });
-
-
             document.getElementById('subdistrict').addEventListener('change', function () {
                 const selected = this.options[this.selectedIndex];
                 if (selected.dataset.id) {

@@ -11,7 +11,7 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-lg">Selamat datang, <span class="font-bold">{{ auth()->user()->name }}</span>!</p>
-                            <p class="text-sm opacity-90 mt-1">Apa yang ingin Anda laporkan hari ini?</p>
+                            <p class="text-sm opacity-90 mt-1">Tinjau laporan yang sedang diproses</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -82,7 +82,6 @@
                             <p class="text-gray-700 text-sm mb-4">{{ Str::limit($report->description, 100) }}</p>
            
                             <div class="mt-4 flex justify-between items-start gap-4">
-                                {{-- Keterangan Status --}}
                                 <div>
                                     @if ($report->status === 'PROSES')
                                         <button onclick="showModal({{ $report->id }})"
@@ -99,8 +98,6 @@
                                         </span>
                                     @endif
                                 </div>
-                           
-                                {{-- Tombol Aksi --}}
                                 <div class="flex flex-row sm:flex-row gap-1">
                                     <a href="{{ route('staff.reports.export.single', $report->id) }}"
                                         class="inline-flex items-center px-2 py-1.5 border border-transparent text-xs font-medium rounded text-green-600">
@@ -111,7 +108,6 @@
                                         </svg>
                                         Export
                                     </a>
-                           
                                     @if (in_array($report->status, ['SELESAI', 'DITOLAK']))
                                         <form action="{{ route('staff.reports.destroy', $report->id) }}" method="POST" class="delete-form">
                                             @csrf
@@ -152,7 +148,6 @@
                             <select name="status" id="status" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                 <option value="PROSES">Proses Penyelesaian</option>
                                 <option value="DITOLAK">Tolak Laporan</option>
-                                {{-- <option value="SELESAI">Tandai Selesai</option> --}}
                             </select>
                         </div>
                     </div>

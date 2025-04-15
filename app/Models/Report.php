@@ -59,7 +59,7 @@ class Report extends Model
 
     public function handledBy()
     {
-        return $this->belongsTo(User::class, 'handled_by'); // 'handled_by' itu nama kolom yang menyimpan ID staff
+        return $this->belongsTo(User::class, 'handled_by');
     }
 
     public function responseProgress()

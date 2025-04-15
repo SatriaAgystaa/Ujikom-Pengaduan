@@ -7,10 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4">
-
-
     <div class="w-full max-w-md p-8 bg-white shadow-xl rounded-2xl border border-blue-100/50 animate-fade-in">
-        <!-- Logo Section -->
         <div class="flex justify-center mb-6">
             <div class="bg-gradient-to-r from-indigo-600 to-blue-500 p-3 rounded-full shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,16 +15,10 @@
                 </svg>
             </div>
         </div>
-
-
-        <!-- Header Section -->
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-gray-800">Masuk ke Akun Anda</h2>
             <p class="text-sm text-gray-500 mt-2">Selamat datang kembali! Silakan masuk untuk melanjutkan.</p>
         </div>
-
-
-        <!-- Status Message -->
         @if (session('status'))
             <div class="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-lg border border-green-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -36,14 +27,8 @@
                 {{ session('status') }}
             </div>
         @endif
-
-
-        <!-- Login Form -->
         <form method="POST" action="{{ route('login') }}" class="space-y-5">
             @csrf
-
-
-            <!-- Email Field -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
                 <div class="relative">
@@ -65,9 +50,6 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Password Field -->
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                 <div class="relative">
@@ -89,32 +71,21 @@
                     </p>
                 @enderror
             </div>
-
-
-            <!-- Remember Me & Forgot Password -->
             <div class="flex items-center justify-between">
                 <label class="inline-flex items-center">
                     <input type="checkbox" name="remember" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                     <span class="ml-2 text-sm text-gray-600">Ingat Saya</span>
                 </label>
-
-
                 @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 hover:underline transition duration-200">
                         Lupa Password?
                     </a>
                 @endif
             </div>
-
-
-            <!-- Submit Button -->
             <button type="submit"
                 class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200 transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
                 Masuk
             </button>
-
-
-            <!-- Registration Link -->
             <p class="text-center text-sm text-gray-600">
                 Belum punya akun?
                 <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 hover:underline transition duration-200">

@@ -4,8 +4,6 @@
             Detail Laporan
         </h2>
     </x-slot>
-
-
     <div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6">
         <div>
             <a href="{{ route('dashboard.staff') }}" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition">

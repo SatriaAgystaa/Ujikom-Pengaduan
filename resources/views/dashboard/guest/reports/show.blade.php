@@ -11,7 +11,6 @@
             Kembali ke Daftar Laporan
         </a>
     </div>
-
     <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
             <div class="bg-white overflow-hidden shadow rounded-lg">
@@ -95,8 +94,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- Komentar --}}
             <div class="bg-white shadow rounded-lg overflow-hidden">
                 <div class="px-6 py-4 border-b border-gray-200">
                     <h3 class="text-lg font-medium text-gray-900 flex items-center">
@@ -133,7 +130,6 @@
                             </div>
                         @endforelse
                     </div>
-
                     <div class="mt-6">
                         {{ $comments->links() }}
                     </div>
